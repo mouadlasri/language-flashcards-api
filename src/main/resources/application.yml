@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: language-flashcards-api
+
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    hikari:
+      maximum-pool-size: ${DB_POOL_SIZE:5}
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+
+  flyway:
+    enabled: true
+
+
+  jackson:
+    datatype:
+      datetime:
+        write-dates-as-timestamps: false
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${SUPABASE_JWT_ISSUER}
+          jwk-set-uri: ${SUPABASE_JWKS_URI}
+          audiences: ${SUPABASE_JWT_AUDIENCE:authenticated}
+          jws-algorithms: ${SUPABASE_JWT_ALGORITHM:ES256}
+
+server:
+  port: ${SERVER_PORT:8080}
