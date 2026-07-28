@@ -40,7 +40,7 @@ public class DeckController {
     public ResponseEntity<DeckResponse> getDeckById(@AuthenticationPrincipal Jwt jwt, @PathVariable UUID deckId) {
         UUID userId = UUID.fromString(jwt.getSubject());
 
-        DeckResponse deckResponse = deckService.getDeckById(userId, deckId);
+        DeckResponse deckResponse = deckService.getDeckByIdAndUserId(deckId, userId);
 
         return ResponseEntity.ok(deckResponse);
     }

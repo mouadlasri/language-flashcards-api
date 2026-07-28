@@ -38,13 +38,23 @@ public class DeckService {
     }
 
     @Transactional(readOnly = true)
-    public DeckResponse getDeckById(UUID userId, UUID deckId) {
+    public DeckResponse getDeckByIdAndUserId(UUID deckId, UUID userId) {
         userService.getActiveUserEntityById(userId);
 
         Deck deck = deckRepository.findByIdAndUserIdAndDeletedAtIsNull(deckId, userId)
                 .orElseThrow(() -> new DeckNotFoundException());
 
         return toDeckResponse(deck);
+    }
+
+    @Transactional(readOnly = true)
+    public Deck getDeckEntityByIdAndUserId(UUID deckId, UUID userId) {
+        userService.getActiveUserEntityById(userId);
+
+        Deck deck = deckRepository.findByIdAndUserIdAndDeletedAtIsNull(deckId, userId)
+                .orElseThrow(() -> new DeckNotFoundException());
+
+        return deck;
     }
 
     @Transactional
