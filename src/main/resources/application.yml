@@ -36,4 +36,4 @@ spring:
           jws-algorithms: ${SUPABASE_JWT_ALGORITHM:ES256}
 
 server:
-  port: ${SERVER_PORT:8080}
+  port: ${PORT:${SERVER_PORT:8080}}
