@@ -250,7 +250,7 @@ user avoids revealing whether another user's resource exists.
 
 ## Completion Notes
 
-Project completed on July 28, 2026.
+Project completed and deployed on July 30, 2026.
 
 Verified:
 
@@ -258,6 +258,12 @@ Verified:
 - Missing or invalid bearer tokens are rejected.
 - Authenticated profile and deck workflows were tested manually.
 - The full project compiles successfully.
+- The multi-stage Docker image builds and starts successfully.
+- Cloud Build continuously deploys the GitHub `main` branch to Cloud Run.
+- The Cloud Run runtime service account reads the Supabase database password
+  from Secret Manager.
+- The deployed `/health`, unauthenticated `401`, and authenticated profile
+  workflows were verified.
 
 Deferred improvements:
 
@@ -266,4 +272,3 @@ Deferred improvements:
 - Add study sessions, review history, and spaced-repetition behavior.
 - Synchronize Supabase email changes into the local profile.
 - Implement full Supabase account deletion if required.
-- Add Docker and Cloud Run deployment configuration.
