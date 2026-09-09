@@ -247,28 +247,3 @@ The API returns consistent JSON errors for:
 
 Returning `404` for a deck or flashcard that is not owned by the authenticated
 user avoids revealing whether another user's resource exists.
-
-## Completion Notes
-
-Project completed and deployed on July 30, 2026.
-
-Verified:
-
-- Supabase ES256 access tokens are accepted through Spring Security.
-- Missing or invalid bearer tokens are rejected.
-- Authenticated profile and deck workflows were tested manually.
-- The full project compiles successfully.
-- The multi-stage Docker image builds and starts successfully.
-- Cloud Build continuously deploys the GitHub `main` branch to Cloud Run.
-- The Cloud Run runtime service account reads the Supabase database password
-  from Secret Manager.
-- The deployed `/health`, unauthenticated `401`, and authenticated profile
-  workflows were verified.
-
-Deferred improvements:
-
-- Add automated security, ownership, repository, and integration tests.
-- Add a current-user-wide flashcard listing endpoint.
-- Add study sessions, review history, and spaced-repetition behavior.
-- Synchronize Supabase email changes into the local profile.
-- Implement full Supabase account deletion if required.
